@@ -1,0 +1,159 @@
+linux distributions:
+Redhat
+Ubuntu
+Centos 
+Suse Linux 
+Debian
+Fedora
+Gentoo
+Mandriva
+Slackware 
+
+File system:
+1. / => root directory 
+2. home => home directory. 
+3. bin => binary files 
+4. sbin => System binary files.
+5. etc: This contains config files. eg; sudoers,groups
+6. lib: system library
+7. proc: It contains the RAM, process and kernel info
+8. tmp: It contains all the temporary files.
+9. dev: it contains all the device files.
+10. opt: optional. Third party software installation.
+11. usr: Unix system resource. it will contain all the binary and libraries.
+12. var: it contains variables files.
+sys, mnt, boot, media etc: 
+
+commands: 
+
+mkdir direct1 
+
+mkdir -p dir1/dir2/dir3/text.txt 
+-p : it will create parent directory  if they dont exist
+
+directory/file 
+777
+1777
+0777
+0400
+
+Owner Group Others 
+
+read - 4
+write - 2
+execute - 1
+
+-m => mode 
+
+mkdir -m 700 test 
+
+-v => verbose 
+
+
+
+Directory navigation
+Command Utility
+pwd Get the full path of the current working directory.
+cd - Navigate to the last directory you were working in.
+cd ~ or just cd Navigate to the current user's home directory.
+cd .. Go to the parent directory of current directory (mind the space between cd and ..)
+Listing files inside a directory
+Command Utility
+ls -l List the files and directories in the current directory in long (table) format (It is recommended to
+use -l with ls for better readability).
+ls -ld dir-name List information about the directory dir-name instead of its contents.
+ls -a List all the files including the hidden ones (File names starting with a . are hidden files in Linux).
+ls -F Appends a symbol at the end of a file name to indicate its type (* means executable, / means
+directory, @ means symbolic link, = means socket, | means named pipe, > means door).
+ls -lt List the files sorted by last modified time with most recently modified files showing at the top
+(remember -l option provides the long format which has better readability).
+ls -lh List the file sizes in human readable format.
+ls -lR Shows all subdirectories recursively.
+tree Will generate a tree representation of the file system starting from the current directory.
+
+
+inode:file systems to store metadata about a file or directory, not the actual data.
+An inode is like a label on a box that tells you everything about what’s inside — size, owner, permissions, and where to find the contents — but it doesn’t store the actual items (the file data).
+
+The inode stores details about the file (metadata):
+Who owns it
+When it was created
+How big it is
+Where the actual data blocks are on the disk
+The file name and the actual content are stored elsewhere.
+The directory links the file name to the inode number, and the inode points to the data blocks.
+
+
+it is a data structure that is created when file system is created.
+- Owner and group infomation
+- file type
+- permission to the file
+- date and time of creation, last read and changes
+- number of links
+- file size
+
+ ...Metadata means “data about data.”
+It’s extra information that describes a file, but not the actual content of the file.
+
+
+Absolute path: gives full address of the file or dir starting from root dir(/).
+always begins with /
+it does not depend on ur current loc in the file sys, no matter where u are, this path will take u to same exact file or dir.
+same loc evrytime.
+/home/user/file
+
+Relative path: is based on ue current dir.
+does not start with /
+uses symbols: . current dir
+.. parent dir     ex:  ../file
+
+
+
+File/directory create, copy and remove
+Command Utility
+cp -p source destination
+Will copy the file from source to destination. -p stands for preservation. It
+preserves the original attributes of file while copying like file owner, timestamp,
+group, permissions etc.
+cp -R source_dir
+destination_dir Will copy source directory to specified destination recursively.
+mv file1 file2 In Linux there is no rename command as such. Hence mv moves/renames the
+file1 to file2.
+rm -i filename
+Asks you before every file removal for confirmation. IF YOU ARE A NEW USER
+TO LINUX COMMAND LINE, YOU SHOULD ALWAYS USE rm -i. You can specify
+multiple files.
+rm -R dir-name Will remove the directory dir-name recursively.
+rm -rf dir-name
+Will remove the directory dir recursively, ignoring non-existent files and will
+never prompt for anything. BE CAREFUL USING THIS COMMAND! You can
+specify multiple directories.
+rmdir dir-name Will remove the directory dir-name, if it's empty. This command can only remove
+empty directories.
+mkdir dir-name Create a directory dir-name.
+mkdir -p dir-name/dir-name Create a directory hierarchy. Create parent directories as needed, if they don't
+exist. You can specify multiple directories.
+touch filename Create a file filename, if it doesn't exist, otherwise change the timestamp of the
+file to current time.
+
+
+File/directory permissions and groups
+Command Utility
+GoalKicker.com – Linux® Notes for Professionals 5
+chmod <specification> filename Change the file permissions. Specifications = u user, g group, o other, + add
+permission, - remove, r read, w write,x execute.
+chmod -R <specification> dirname
+Change the permissions of a directory recursively. To change permission of
+a directory and everything within that directory, use this command.
+chmod go=+r myfile Add read permission for the owner and the group.
+chmod a +rwx myfile Allow all users to read, write or execute myfile.
+chmod go -r myfile Remove read permission from the group and others.
+chown owner1 filename Change ownership of a file to user owner1.
+chgrp grp_owner filename Change primary group ownership of file filename to group grp_owner.
+chgrp -R grp_owner dir-name
+Change primary group ownership of directory dir-name to group grp_owner
+recursively. To change group ownership of a directory and everything within
+that directory, use this command.
+
+
+
